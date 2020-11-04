@@ -1,34 +1,19 @@
-import React, { useState } from "react";
-import { observer } from 'mobx-react-lite';
-import SearchStore from "../../store/SearchStore";
+import React from "react";
+import {
+	Wrapper,
+} from './styles';
+import SearchForm from "../../components/SearchForm";
 
-const Home = observer(() => {
-	const [search] = useState(() => new SearchStore());
-
-	const changeValue = ({ target }) => {
-		search.changeValue(target.value);
-	};
-
-	const changeFirstName = ({ target }) => {
-		search.changeFirstName(target.value);
-	};
-
-	const changeLastName = ({ target }) => {
-		search.changeLastName(target.value);
+const Home = () => {
+	const onSubmitSearchForm = (data) => {
+		console.log(data);
 	};
 
 	return (
-		<div>
-			home page { search.searchValue }
-			<input onChange={changeValue} />
-			<input onChange={changeFirstName} placeholder="First Name" />
-			<input onChange={changeLastName} placeholder="Last Name" />
-			<hr />
-			<h1>
-				{ search.fullName }
-			</h1>
-		</div>
+		<Wrapper>
+			<SearchForm onSubmit={onSubmitSearchForm} />
+		</Wrapper>
 	)
-});
+};
 
 export default Home;
