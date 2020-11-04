@@ -15,13 +15,13 @@ const SearchForm = ({ onSubmit }) => {
 	return (
 		<Form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
 			<Typography component="h3" variant="h3" align="center" color="textPrimary" gutterBottom>
-				Book search
+				Recipes search
 			</Typography>
 			<FlexBox>
 				<TextField
 					id="search"
 					name="searchField"
-					label="Book name"
+					label="Recipes name"
 					variant="outlined"
 					size="small"
 					fullWidth

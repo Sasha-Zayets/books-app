@@ -1,36 +1,36 @@
-import {observable, action, makeObservable, computed} from 'mobx';
+import {observable, action, makeObservable } from 'mobx';
+import API from "../utils/api";
 
 class SearchStore {
 	searchValue = '';
-	firstName = '';
-	lastName = '';
+	resultsSearch = [];
 
 	constructor() {
 		makeObservable(this, {
 			searchValue: observable,
-			firstName: observable,
-			lastName: observable,
-			changeValue: action,
-			changeFirstName: action,
-			changeLastName: action,
-			fullName: computed,
+			resultsSearch: observable,
+			searchBook: action,
 		});
 	}
 
-	changeValue(value) {
-		this.searchValue = value;
-	}
+	async searchBook(value) {
+		try {
+			const result = await API.get('/recipes/complexSearch', {
+				params: {
+					query: value,
+				},
+			});
 
-	changeFirstName(value) {
-		this.firstName = value;
-	}
+			if (result.status === 200) {
+				this.searchValue = value;
+				this.resultsSearch = result.data.results;
 
-	changeLastName(value) {
-		this.lastName = value;
-	}
-
-	get fullName() {
-		return `${this.firstName} ${this.lastName}`;
+				console.log(result.data.results);
+				return result;
+			}
+		} catch (e) {
+			console.log(e);
+		}
 	}
 }
 
