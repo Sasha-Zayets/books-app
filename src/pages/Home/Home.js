@@ -7,6 +7,7 @@ import SearchForm from "../../components/SearchForm";
 import SearchStore from "../../store/SearchStore";
 import MediaCard from "../../components/MediaCard";
 import { observer } from "mobx-react-lite";
+import Grid from "@material-ui/core/Grid";
 
 const searchStore = new SearchStore();
 
@@ -19,15 +20,21 @@ const Home = observer(() => {
 		<Wrapper>
 			<SearchForm onSubmit={onSubmitSearchForm} />
 			<Box mt={3}>
-				{
-					searchStore.resultsSearch.map((item, index) => (
-						<MediaCard
-							key={index}
-							title={item.title}
-							image={item.image}
-						/>
-					))
-				}
+				<Grid container>
+					{
+						searchStore.resultsSearch.map((item, index) => (
+							<Grid item lg={6} key={index}>
+								<Box mb={2}>
+									<MediaCard
+										title={item.title}
+										image={item.image}
+										id={item.id}
+									/>
+								</Box>
+							</Grid>
+						))
+					}
+				</Grid>
 			</Box>
 		</Wrapper>
 	)

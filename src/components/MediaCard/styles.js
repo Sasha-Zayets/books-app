@@ -7,4 +7,7 @@ export const useStyles = makeStyles({
 	media: {
 		height: 140,
 	},
+	link: {
+		textDecoration: 'none',
+	},
 });
