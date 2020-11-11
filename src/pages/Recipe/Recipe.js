@@ -14,8 +14,6 @@ const Recipe = observer(() => {
 	const { id } = useParams();
 	const recipeInfo = recipeStore.recipeInfo;
 
-	console.log('render');
-
 	useEffect(() => {
 		const loadingData = () => {
 			recipeStore.getRecipeInfo(id);

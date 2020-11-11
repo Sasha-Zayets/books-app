@@ -2,12 +2,10 @@ import {observable, action, makeObservable } from 'mobx';
 import API from "../utils/api";
 
 class SearchStore {
-	searchValue = '';
 	resultsSearch = [];
 
 	constructor() {
 		makeObservable(this, {
-			searchValue: observable,
 			resultsSearch: observable,
 			searchBook: action,
 		});
@@ -22,10 +20,8 @@ class SearchStore {
 			});
 
 			if (result.status === 200) {
-				this.searchValue = value;
 				this.resultsSearch = result.data.results;
 
-				console.log(result.data.results);
 				return result;
 			}
 		} catch (e) {
@@ -34,4 +30,6 @@ class SearchStore {
 	}
 }
 
-export default SearchStore;
+const searchStore = new SearchStore();
+
+export default searchStore;

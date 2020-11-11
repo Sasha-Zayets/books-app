@@ -17,6 +17,10 @@ export const useStyles = makeStyles((theme) => ({
 	toolbarTitle: {
 		flexGrow: 1,
 	},
+	linkTitle: {
+		color: 'black',
+		textDecoration: 'none',
+	},
 	link: {
 		margin: theme.spacing(1, 1.5),
 	},
