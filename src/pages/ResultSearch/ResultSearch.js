@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import {
   Wrapper,
@@ -24,6 +24,7 @@ const ResultSearch = observer(() => {
 
   return (
     <Wrapper>
+      <Link to="/">Back</Link>
       <TitleResult>
         Search: { search }
       </TitleResult>
