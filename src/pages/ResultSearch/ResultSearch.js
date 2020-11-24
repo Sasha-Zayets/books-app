@@ -6,10 +6,8 @@ import {
   TitleResult,
   TextBlock,
 } from './styles';
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import MediaCard from "../../components/MediaCard";
 import searchStore from "../../store/SearchStore";
+import ListRecipe from "../../components/ListRepice";
 
 const ResultSearch = observer(() => {
   const { search } = useParams();
@@ -34,23 +32,7 @@ const ResultSearch = observer(() => {
           <TextBlock>No search results</TextBlock>
         )
         : (
-          <Box mt={3}>
-            <Grid container>
-              {
-                searchStore.resultsSearch.map((item, index) => (
-                  <Grid item lg={6} key={index}>
-                    <Box mb={2}>
-                      <MediaCard
-                        title={item.title}
-                        image={item.image}
-                        id={item.id}
-                      />
-                    </Box>
-                  </Grid>
-                ))
-              }
-            </Grid>
-          </Box>
+          <ListRecipe recipes={searchStore.resultsSearch} />
         )
       }
     </Wrapper>

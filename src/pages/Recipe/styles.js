@@ -23,6 +23,7 @@ export const SubTitle = styled.h3``;
 export const FlexWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 25px;
   
   & > * {
     margin: 0 10px 10px 0;

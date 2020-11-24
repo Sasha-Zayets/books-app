@@ -23,5 +23,8 @@ export const useStyles = makeStyles((theme) => ({
 	},
 	link: {
 		margin: theme.spacing(1, 1.5),
+		color: '#2196f3',
+		fontWeight: '700',
+		textDecoration: 'none',
 	},
 }));

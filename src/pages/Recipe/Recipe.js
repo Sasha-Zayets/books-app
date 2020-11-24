@@ -51,6 +51,20 @@ const Recipe = observer(() => {
 					))
 				}
 			</FlexWrapper>
+			<SubTitle>Diets:</SubTitle>
+			<FlexWrapper>
+				{
+					recipeInfo.diets.map((item, index) => (
+						<Chip
+							key={index}
+							variant="outlined"
+							size="small"
+							color="primary"
+							label={item}
+						/>
+					))
+				}
+			</FlexWrapper>
 		</Wrapper>
 	);
 });
