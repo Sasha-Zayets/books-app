@@ -17,3 +17,14 @@ export const BigImage = styled.img`
 export const Title = styled.h1``;
 
 export const Content = styled.div``;
+
+export const SubTitle = styled.h3``;
+
+export const FlexWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  
+  & > * {
+    margin: 0 10px 10px 0;
+  }
+`;

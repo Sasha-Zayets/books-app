@@ -2,7 +2,7 @@ import API from "../utils/api";
 import { action, makeObservable, observable } from "mobx";
 
 class RecipeStore {
-	recipeInfo = {}
+	recipeInfo = {};
 
 	constructor() {
 		makeObservable(this, {
@@ -14,7 +14,7 @@ class RecipeStore {
 	async getRecipeInfo(id) {
 		const result = await API.get(`/recipes/${id}/information`);
 		this.recipeInfo = result.data;
-		console.log(recipeStore);
+		console.log(result.data);
 	}
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { observer } from "mobx-react-lite";
+import Chip from "@material-ui/core/Chip";
 import recipeStore from "../../store/RecipeStore";
 import {
 	Wrapper,
@@ -8,6 +9,8 @@ import {
 	BigImage,
 	Title,
 	Content,
+	SubTitle,
+	FlexWrapper,
 } from './styles';
 
 const Recipe = observer(() => {
@@ -35,6 +38,19 @@ const Recipe = observer(() => {
 					__html: recipeInfo.summary
 				}}
 			/>
+			<SubTitle>List Ingredients:</SubTitle>
+			<FlexWrapper>
+				{
+					recipeInfo.extendedIngredients.map((item, index) => (
+						<Chip
+							key={index}
+							variant="outlined"
+							size="small"
+							label={item.name}
+						/>
+					))
+				}
+			</FlexWrapper>
 		</Wrapper>
 	);
 });

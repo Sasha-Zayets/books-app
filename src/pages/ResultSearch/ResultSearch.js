@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import {Link, useParams} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import {
   Wrapper,
   TitleResult,
+  TextBlock,
 } from './styles';
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -12,7 +13,6 @@ import searchStore from "../../store/SearchStore";
 
 const ResultSearch = observer(() => {
   const { search } = useParams();
-  console.log(search);
 
   useEffect(() => {
     const searchRecipe = async () => {
@@ -28,23 +28,31 @@ const ResultSearch = observer(() => {
       <TitleResult>
         Search: { search }
       </TitleResult>
-      <Box mt={3}>
-				<Grid container>
-					{
-						searchStore.resultsSearch.map((item, index) => (
-							<Grid item lg={6} key={index}>
-								<Box mb={2}>
-									<MediaCard
-										title={item.title}
-										image={item.image}
-										id={item.id}
-									/>
-								</Box>
-							</Grid>
-						))
-					}
-				</Grid>
-			</Box>
+      {
+        searchStore.resultsSearch.length === 0
+        ? (
+          <TextBlock>No search results</TextBlock>
+        )
+        : (
+          <Box mt={3}>
+            <Grid container>
+              {
+                searchStore.resultsSearch.map((item, index) => (
+                  <Grid item lg={6} key={index}>
+                    <Box mb={2}>
+                      <MediaCard
+                        title={item.title}
+                        image={item.image}
+                        id={item.id}
+                      />
+                    </Box>
+                  </Grid>
+                ))
+              }
+            </Grid>
+          </Box>
+        )
+      }
     </Wrapper>
   )
 });
